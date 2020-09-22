@@ -31,7 +31,7 @@ class WelcomeContainer extends React.Component {
           </div>
 
           <div className='main-image'>
-            <img src={increasing_chart} />
+            <img src={increasing_chart} alt='Increasing chart'/>
           </div>
         </div>
       </div>
