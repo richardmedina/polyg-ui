@@ -6,7 +6,7 @@ import './welcome-container.styles.scss'
 import AppLogo from 'components/app-logo/app-logo.component'
 import AppMenu from 'components/app-menu/app-menu.component'
 import LoginForm from 'components/login-form/login-form.component'
-import WithModal from 'hoc/with-modal.component'
+import WithModal from 'hoc/with-modal/with-modal.component'
 
 const LoginFormWithModal = WithModal(LoginForm)
 
