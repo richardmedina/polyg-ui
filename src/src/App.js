@@ -6,6 +6,9 @@ import WelcomeContainer from 'containers/welcome-container/welcome-container.com
 
 import store from 'redux/store'
 
+import { login } from 'redux/auth/auth.actions'
+store.dispatch(login(1, 2))
+
 const App = ({ isLogged }) =>
   <Provider store={store}>
     {
