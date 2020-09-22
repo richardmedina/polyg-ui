@@ -1,0 +1,41 @@
+
+.welcome-container {
+  font-family: 'Rasa';
+  background: #FBB13C;
+  height: 100vh;
+
+  .header{ 
+    display: flex;
+    flex-direction: row;
+
+    .app-logo {
+      flex: 1 0;
+    }
+
+    .app-menu {
+      flex: 1 0;
+      position: relative;
+      text-align: right;
+      margin: auto;
+    }
+  }
+
+  .content {
+    position: relative;
+    .main-message {
+      position:absolute;
+      top: 150px;
+      left: 100px;
+      
+      color: #2176AE;
+      font-size: 48px;
+      width: 400px;
+    }
+
+    .main-image {
+      position: absolute;
+      top: 50px;
+      left: 500px;
+    }
+  }
+}

@@ -11,30 +11,15 @@ import './header.styles.scss'
 
 import AppLogo from 'components/app-logo/app-logo.component'
 import AppMenu from 'components/app-menu/app-menu.component'
+import AppToolbar from 'components/app-toolbar/app-toolbar.component'
 
-const LayoutHeader = () =>
-  <>
-  <div>
-    <div className='brand-container'>
-      <AppLogo title="Polyg" description="Just another app for learning languages"/>
-      <div className='app-menu'>
-        <AppMenu />
-      </div>
-    </div>
-  </div>
-  <Navbar bg="dark" variant="dark">
-    {/* <Navbar.Brand href="#home">Navbar</Navbar.Brand> */}
-    <Nav className="mr-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#features">Phrases</Nav.Link>
-      <Nav.Link href="#pricing">About</Nav.Link>
-    </Nav>
-    <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-info">Search</Button>
-    </Form>
-  </Navbar>
-  </>
+
+const appInfo = {
+  title: 'Polyg',
+  description: 'Just another tool for learning languages'
+}
+const LayoutHeader = ({ isLogged = false }) =>
+  <AppToolbar />
 
 export default LayoutHeader
 
