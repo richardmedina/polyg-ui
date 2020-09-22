@@ -5,6 +5,10 @@ import './welcome-container.styles.scss'
 
 import AppLogo from 'components/app-logo/app-logo.component'
 import AppMenu from 'components/app-menu/app-menu.component'
+import LoginForm from 'components/login-form/login-form.component'
+import WithModal from 'hoc/with-modal.component'
+
+const LoginFormWithModal = WithModal(LoginForm)
 
 const appInfo = {
   title: 'Polyg',
@@ -13,16 +17,62 @@ const appInfo = {
 
 
 class WelcomeContainer extends React.Component {
+  state = {
+    loginModal: {
+      show: false,
+      email: '',
+      password: ''
+    }
+  }
+
+  handleLoginChange = evt => {
+    const { name, value } = evt.target
+    this.setState(prevState => ({
+      ...prevState,
+      loginModal: {
+        ...prevState.loginModal,
+        [name]: value
+      }
+    }))
+  }
+
+  handleModalShow = (key, show) => {
+    this.setState(prevState => ({
+      ...prevState,
+      [key]: {
+        ...(show ? {} : prevState[key]),
+        show: show
+      }
+    }))
+  }
+
+  handleLoginSubmit = evt => {
+    console.log('Submiting: ', this.state.loginModal)
+
+    this.handleModalShow('loginModal', false)
+  }
+
   render (){
     return (
-      
       <div className='welcome-container'>
+        <LoginFormWithModal
+          title='Login'
+          okLabel='Log In'
+          cancelLabel='Close'
+          handleChange={this.handleLoginChange}
+          handleClose={() => this.handleModalShow('loginModal', false)}
+          handleSubmit={this.handleLoginSubmit}
+          {...this.state.loginModal}
+        />
         <div className='header'>
           <div className='app-logo'>
             <AppLogo { ...appInfo } />
           </div>
           <div className='app-menu'>
-            <AppMenu />
+            <AppMenu
+              handleLoginClick={() => { this.handleModalShow('loginModal', true)}}
+              handleSignupClick={() => {}}
+            />
           </div>
         </div>
         <div className='content'>
