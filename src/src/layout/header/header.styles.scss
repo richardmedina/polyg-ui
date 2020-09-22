@@ -1,0 +1,16 @@
+
+.brand-container {
+  display: flex;
+  flex-direction: row;
+
+  .app-logo {
+    flex: 1 0;
+  }
+
+  .app-menu {
+    flex: 1 0;
+    position: relative;
+    text-align: right;
+    margin: auto;
+  }
+}

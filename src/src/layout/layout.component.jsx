@@ -8,7 +8,6 @@ class Layout extends React.Component {
   render() {
     return (
       <div>
-        <AppLogo title="Polyg" description="Just another app for learning languages"/>
         <Header />
         <Content />
       </div>
