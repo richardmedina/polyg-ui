@@ -1,0 +1,29 @@
+.app-logo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  .app-logo-img {
+    width: 70px;
+    height: 70px;
+    flex: 0 0;
+  }
+
+  .app-logo-info {
+    flex: 1 0;
+    margin-top: 20px;
+
+    .app-logo-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: darkorange;
+    }
+
+    .app-logo-description {
+      flex: 0 0;
+      font-size: 12px;
+      color: #888;
+    }
+  }
+
+}
