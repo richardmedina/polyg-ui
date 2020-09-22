@@ -40,7 +40,7 @@ class WelcomeContainer extends React.Component {
     this.setState(prevState => ({
       ...prevState,
       [key]: {
-        ...(show ? {} : prevState[key]),
+        ...(show ? { email: '', password: ''} : prevState[key]),
         show: show
       }
     }))

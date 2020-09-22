@@ -7,32 +7,32 @@ import {
 
 const LoginForm = ({ email, password, handleChange }) => 
   <Form>
-    <Form.Group controlId="login-form-email">
+    <Form.Group controlId='login-form-email'>
       <Form.Label>Email address</Form.Label>
       <Form.Control
-        type="email"
+        type='email'
         name='email'
-        placeholder="Enter email"
+        placeholder='Enter email'
         value={email}
         onChange={handleChange}
        />
-      <Form.Text className="text-muted">
+      <Form.Text className='text-muted'>
         We'll never share your email with anyone else.
       </Form.Text>
     </Form.Group>
 
-    <Form.Group controlId="login-form-password">
+    <Form.Group controlId='login-form-password'>
       <Form.Label>Password</Form.Label>
       <Form.Control
-        type="password"
+        type='password'
         name='password'
-        placeholder="Password"
+        placeholder='Password'
         value={password}
         onChange={handleChange}
       />
     </Form.Group>
-    <Form.Group controlId="formBasicCheckbox">
-      <Form.Check type="checkbox" label="Check me out" />
+    <Form.Group controlId='formBasicCheckbox'>
+      <Form.Check type='checkbox' label='Check me out' />
     </Form.Group>
   </Form>
 
