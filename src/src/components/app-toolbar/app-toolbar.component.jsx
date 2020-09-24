@@ -18,6 +18,7 @@ const AppToolbar = ({ onLogoutClick }) =>
     <Nav className="mr-auto">
       <Nav.Link as={Link} to="/">Home</Nav.Link>
       <Nav.Link as={Link} to='/phrases'>Phrases</Nav.Link>
+      <Nav.Link as={Link} to='/notifications'>Notifications</Nav.Link>
       <Nav.Link as={Link} to='/about'>About</Nav.Link>
     </Nav>
     <Form inline>

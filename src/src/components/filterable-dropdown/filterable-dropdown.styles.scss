@@ -1,0 +1,13 @@
+.filterable-dropdown {
+    .dropdown-item:hover {
+      color:white;
+      text-decoration: none;
+      background-color: #28a745;
+    }
+
+    .dropdown-item + .active {
+      color:white;
+      text-decoration: none;
+      background-color: #28a745;
+    }
+}

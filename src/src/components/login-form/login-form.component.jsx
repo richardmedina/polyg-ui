@@ -1,9 +1,6 @@
 import React from 'react'
 
-import {
-  Alert,
-  Form
-} from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 
 const LoginForm = ({ email, password, handleChange, showError }) => 
   <Form>
