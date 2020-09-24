@@ -78,6 +78,7 @@ class WelcomeContainer extends React.Component {
           title='Login to Polyg'
           okLabel='Log In'
           cancelLabel='Close'
+          errorMessage='Invalid username or password'
           handleChange={this.handleLoginChange}
           handleClose={() => this.handleModalShow('loginModal', false)}
           handleSubmit={this.handleLoginSubmit}

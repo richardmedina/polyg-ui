@@ -34,12 +34,6 @@ const LoginForm = ({ email, password, handleChange, showError }) =>
     <Form.Group controlId='formBasicCheckbox'>
       <Form.Check type='checkbox' label='Check me out' />
     </Form.Group>
-    {
-      showError &&
-      <Alert variant='danger'>
-        Invalid username or password
-      </Alert>
-    }
   </Form>
 
 export default LoginForm

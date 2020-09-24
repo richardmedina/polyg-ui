@@ -2,16 +2,19 @@ import React from 'react'
 import {
   Modal,
   Button,
-  Spinner
+  Spinner,
+  Alert
 } from 'react-bootstrap'
 
 const WithModal = WrappedComponent => (
   {
     show = true,
     title = '',
-    okLabel = 'Ok Label',
-    cancelLabel = 'Cancel Label',
+    okLabel = 'Ok',
+    cancelLabel = 'Cancel',
     showSpinner = true,
+    showError = false,
+    errorMessage = 'Unknown Error',
     handleSubmit = () => {},
     handleClose = () => {},
     handleChange = () => {}, 
@@ -24,6 +27,12 @@ const WithModal = WrappedComponent => (
       </Modal.Header>
       <Modal.Body>
         <WrappedComponent handleChange={handleChange} {...props} />
+        {
+          showError &&
+          <Alert variant='danger'>
+            {errorMessage}
+          </Alert>
+        }
       </Modal.Body>
       <Modal.Footer>
         {
