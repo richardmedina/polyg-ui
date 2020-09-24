@@ -14,10 +14,10 @@ const authReducer = (state = initialState, action) => {
         ...state,
         token: action.payload.token,
         expiry: action.payload.expiry
-      } 
+      }
+    default:
+      return state
   }
-
-  return state
 }
 
 export default authReducer
