@@ -17,3 +17,11 @@ export const loginFailure = payload => ({
   type: authActionTypes.LOGIN_FAILURE,
   payload: payload
 })
+
+export const logout = () => ({
+  type: authActionTypes.LOGOUT
+})
+
+export const logoutSuccess = () => ({
+  type: authActionTypes.LOGOUT_SUCCESS
+})

@@ -15,6 +15,14 @@ const authReducer = (state = initialState, action) => {
         token: action.payload.token,
         expiry: action.payload.expiry
       }
+    
+    case authActionTypes.LOGOUT_SUCCESS:
+      return {
+        ...state,
+        token: '',
+        expiry: 0
+      }
+    
     default:
       return state
   }

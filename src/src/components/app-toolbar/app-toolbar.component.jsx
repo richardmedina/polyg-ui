@@ -10,7 +10,7 @@ import {
 
 import AppLogo from 'components/app-logo/app-logo.component'
 
-const AppToolbar = () =>
+const AppToolbar = ({ onLogoutClick }) =>
   <Navbar bg="dark" variant="dark">
     <Navbar.Brand as={Link} to="/">
       <AppLogo small />
@@ -26,7 +26,7 @@ const AppToolbar = () =>
         <Button variant="outline-info">Search</Button>
       </Form.Group>
       <Form.Group style={{paddingLeft: '10px'}}>
-        <Button variant="warning">Logout</Button>
+        <Button variant="warning" onClick={onLogoutClick}>Logout</Button>
       </Form.Group>
     </Form>
   </Navbar>

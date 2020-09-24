@@ -4,7 +4,8 @@ import Api from 'services/Api'
 
 import {
   loginSuccess,
-  loginFailure  
+  loginFailure,
+  logoutSuccess
 } from './auth.actions'
 
 function* login(action) {
@@ -23,12 +24,21 @@ function* login(action) {
   }
 }
 
+function* logout () {
+  yield put(logoutSuccess())
+}
+
 function* onLogin() {
   yield takeLatest(authActionTypes.LOGIN, login)
 }
 
+function* onLogout() {
+  yield takeLatest(authActionTypes.LOGOUT, logout)
+}
+
 export default function* authSagas() {
   yield all([
-    call(onLogin)
+    call(onLogin),
+    call(onLogout)
   ])
 }
