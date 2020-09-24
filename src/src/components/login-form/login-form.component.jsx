@@ -1,8 +1,11 @@
 import React from 'react'
 
-import { Form } from 'react-bootstrap'
+import {
+  Alert,
+  Form
+} from 'react-bootstrap'
 
-const LoginForm = ({ email, password, handleChange }) => 
+const LoginForm = ({ email, password, handleChange, showError }) => 
   <Form>
     <Form.Group controlId='login-form-email'>
       <Form.Label>Email address</Form.Label>
@@ -31,6 +34,12 @@ const LoginForm = ({ email, password, handleChange }) =>
     <Form.Group controlId='formBasicCheckbox'>
       <Form.Check type='checkbox' label='Check me out' />
     </Form.Group>
+    {
+      showError &&
+      <Alert variant='danger'>
+        Invalid username or password
+      </Alert>
+    }
   </Form>
 
 export default LoginForm

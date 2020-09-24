@@ -1,8 +1,11 @@
 import authActionTypes from './auth.types'
 
 const initialState = {
-  token: '',
-  expiry: null,
+  credentials: {
+    token: '',
+    expiry: null,
+    error: null
+  }
 }
 
 const authReducer = (state = initialState, action) => {
@@ -12,15 +15,31 @@ const authReducer = (state = initialState, action) => {
     case authActionTypes.LOGIN_SUCCESS:
       return {
         ...state,
-        token: action.payload.token,
-        expiry: action.payload.expiry
+        credentials: {
+          token: action.payload.token,
+          expiry: action.payload.expiry,
+          error: null
+        }
+      }
+    
+    case authActionTypes.LOGIN_FAILURE:
+      return {
+        ...state,
+        credentials: {
+          token: '',
+          expiry: '',
+          error: action.payload
+        }
       }
     
     case authActionTypes.LOGOUT_SUCCESS:
       return {
         ...state,
-        token: '',
-        expiry: 0
+        credentials: {
+          token: '',
+          expiry: 0,
+          error: null
+        }
       }
     
     default:

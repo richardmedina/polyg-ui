@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 
 import increasing_chart from 'assets/increasing_chart.png'
 import './welcome-container.styles.scss'
@@ -9,7 +10,8 @@ import AppMenu from 'components/app-menu/app-menu.component'
 import LoginForm from 'components/login-form/login-form.component'
 import WithModal from 'hoc/with-modal/with-modal.component'
 
-import { login } from 'redux/auth/auth.actions'
+import { login, logout } from 'redux/auth/auth.actions'
+import { selectIsLoggedInError } from 'redux/auth/auth.selectors'
 
 const LoginFormWithModal = WithModal(LoginForm)
 
@@ -24,7 +26,8 @@ class WelcomeContainer extends React.Component {
     loginModal: {
       show: false,
       email: '',
-      password: ''
+      password: '',
+      showError: false
     }
   }
 
@@ -40,6 +43,8 @@ class WelcomeContainer extends React.Component {
   }
 
   handleModalShow = (key, show) => {
+    const { logout } = this.props
+    
     this.setState(prevState => ({
       ...prevState,
       [key]: {
@@ -47,6 +52,10 @@ class WelcomeContainer extends React.Component {
         show: show
       }
     }))
+
+    if (show === false) {
+      logout()
+    }
   }
 
   handleLoginSubmit = evt => {
@@ -54,10 +63,12 @@ class WelcomeContainer extends React.Component {
     const{ email, password } = this.state.loginModal 
     const { login } = this.props
     login (email, password)
-    this.handleModalShow('loginModal', false)
+    //this.handleModalShow('loginModal', false)
   }
 
   render (){
+    const { loginModal } = this.state
+    const { isLoggedInError } = this.props
     return (
       <div className='welcome-container'>
         <LoginFormWithModal
@@ -67,7 +78,8 @@ class WelcomeContainer extends React.Component {
           handleChange={this.handleLoginChange}
           handleClose={() => this.handleModalShow('loginModal', false)}
           handleSubmit={this.handleLoginSubmit}
-          {...this.state.loginModal}
+          showError={isLoggedInError}
+          {...loginModal}
         />
         <div className='header'>
           <div className='app-logo'>
@@ -94,9 +106,13 @@ class WelcomeContainer extends React.Component {
   } 
 }
 
+const mapStateToProps = createStructuredSelector ({
+  isLoggedInError: selectIsLoggedInError
+})
 const mapDispatchToProps = dispatch => ({
-  login: (userName, password) => dispatch(login(userName, password))
+  login: (userName, password) => dispatch(login(userName, password)),
+  logout: () => dispatch(logout())
 })
 
 export default
-  connect (null, mapDispatchToProps) (WelcomeContainer)
+  connect (mapStateToProps, mapDispatchToProps) (WelcomeContainer)
