@@ -34,6 +34,17 @@
   }
 
   .app-logo-info {
-    display: none;
+    flex: 0 1 300px;
+    margin-top: 7px;
+
+    .app-logo-title {
+      font-size: 12px;
+      font-weight: bold;
+      color: #FBB13C;
+    }
+
+    .app-logo-description {
+      display: none;
+    }
   }
 }

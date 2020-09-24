@@ -21,7 +21,7 @@ const WithModal = WrappedComponent => (
     ...props
   }) =>
   <>
-    { show && <Modal show={show} onHide={handleClose}>
+    { show && <Modal show={show} onHide={handleClose} autoFocus={false}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>

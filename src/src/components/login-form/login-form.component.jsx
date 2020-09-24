@@ -12,6 +12,7 @@ const LoginForm = ({ email, password, handleChange, showError }) =>
         placeholder='Enter email'
         value={email}
         onChange={handleChange}
+        autoComplete='off'
        />
       <Form.Text className='text-muted'>
         We'll never share your email with anyone else.

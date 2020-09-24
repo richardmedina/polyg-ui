@@ -13,7 +13,7 @@ import AppLogo from 'components/app-logo/app-logo.component'
 const AppToolbar = ({ onLogoutClick }) =>
   <Navbar bg="dark" variant="dark">
     <Navbar.Brand as={Link} to="/">
-      <AppLogo small />
+      <AppLogo small title='Polyg' />
     </Navbar.Brand>
     <Nav className="mr-auto">
       <Nav.Link as={Link} to="/">Home</Nav.Link>
