@@ -11,7 +11,7 @@ import LoginForm from 'components/login-form/login-form.component'
 import WithModal from 'hoc/with-modal/with-modal.component'
 
 import { login, logout } from 'redux/auth/auth.actions'
-import { selectIsLoggedInError } from 'redux/auth/auth.selectors'
+import { selectIsLoggedInError, selectIsLoginLoading } from 'redux/auth/auth.selectors'
 
 const LoginFormWithModal = WithModal(LoginForm)
 
@@ -68,7 +68,10 @@ class WelcomeContainer extends React.Component {
 
   render (){
     const { loginModal } = this.state
-    const { isLoggedInError } = this.props
+    const {
+      isLoggedInError,
+      isLoginLoading
+    } = this.props
     return (
       <div className='welcome-container'>
         <LoginFormWithModal
@@ -79,6 +82,7 @@ class WelcomeContainer extends React.Component {
           handleClose={() => this.handleModalShow('loginModal', false)}
           handleSubmit={this.handleLoginSubmit}
           showError={isLoggedInError}
+          showSpinner={isLoginLoading}
           {...loginModal}
         />
         <div className='header'>
@@ -107,6 +111,7 @@ class WelcomeContainer extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector ({
+  isLoginLoading: selectIsLoginLoading,
   isLoggedInError: selectIsLoggedInError
 })
 const mapDispatchToProps = dispatch => ({

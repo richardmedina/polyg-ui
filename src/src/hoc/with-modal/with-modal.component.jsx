@@ -1,7 +1,8 @@
 import React from 'react'
 import {
   Modal,
-  Button
+  Button,
+  Spinner
 } from 'react-bootstrap'
 
 const WithModal = WrappedComponent => (
@@ -10,6 +11,7 @@ const WithModal = WrappedComponent => (
     title = '',
     okLabel = 'Ok Label',
     cancelLabel = 'Cancel Label',
+    showSpinner = true,
     handleSubmit = () => {},
     handleClose = () => {},
     handleChange = () => {}, 
@@ -24,6 +26,9 @@ const WithModal = WrappedComponent => (
         <WrappedComponent handleChange={handleChange} {...props} />
       </Modal.Body>
       <Modal.Footer>
+        {
+          showSpinner && <Spinner animation="border" variant="secondary" />
+        }
         <Button variant="secondary" onClick={handleClose}>
           {cancelLabel}
         </Button>

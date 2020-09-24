@@ -4,7 +4,8 @@ const initialState = {
   credentials: {
     token: '',
     expiry: null,
-    error: null
+    error: null,
+    loading: false
   }
 }
 
@@ -12,13 +13,24 @@ const authReducer = (state = initialState, action) => {
   console.log('action received: ', action)
 
   switch(action.type) {
+
+    case authActionTypes.LOGIN:
+      return {
+        ...state,
+        credentials: {
+          ...state.credentials,
+          loading: true
+        }
+      }
+
     case authActionTypes.LOGIN_SUCCESS:
       return {
         ...state,
         credentials: {
           token: action.payload.token,
           expiry: action.payload.expiry,
-          error: null
+          error: null,
+          loading: false
         }
       }
     
@@ -28,7 +40,8 @@ const authReducer = (state = initialState, action) => {
         credentials: {
           token: '',
           expiry: '',
-          error: action.payload
+          error: action.payload,
+          loading: false
         }
       }
     
@@ -38,7 +51,8 @@ const authReducer = (state = initialState, action) => {
         credentials: {
           token: '',
           expiry: 0,
-          error: null
+          error: null,
+          loading: false
         }
       }
     
