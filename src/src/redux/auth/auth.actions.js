@@ -8,15 +8,12 @@ export const login = (userName, password) => ({
   }
 })
 
-export const loginSuccess = (token, expiry) => ({
+export const loginSuccess = payload => ({
   type: authActionTypes.LOGIN_SUCCESS,
-  payload: {
-    token,
-    expiry
-  }
+  payload: payload
 })
 
-export const loginFailure = (error) => ({
+export const loginFailure = payload => ({
   type: authActionTypes.LOGIN_FAILURE,
-  payload: error
+  payload: payload
 })

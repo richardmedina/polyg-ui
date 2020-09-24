@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import increasing_chart from 'assets/increasing_chart.png'
 import './welcome-container.styles.scss'
@@ -7,6 +8,8 @@ import AppLogo from 'components/app-logo/app-logo.component'
 import AppMenu from 'components/app-menu/app-menu.component'
 import LoginForm from 'components/login-form/login-form.component'
 import WithModal from 'hoc/with-modal/with-modal.component'
+
+import { login } from 'redux/auth/auth.actions'
 
 const LoginFormWithModal = WithModal(LoginForm)
 
@@ -48,7 +51,9 @@ class WelcomeContainer extends React.Component {
 
   handleLoginSubmit = evt => {
     console.log('Submiting: ', this.state.loginModal)
-
+    const{ email, password } = this.state.loginModal 
+    const { login } = this.props
+    login (email, password)
     this.handleModalShow('loginModal', false)
   }
 
@@ -56,7 +61,7 @@ class WelcomeContainer extends React.Component {
     return (
       <div className='welcome-container'>
         <LoginFormWithModal
-          title='Login'
+          title='Login to Polyg'
           okLabel='Log In'
           cancelLabel='Close'
           handleChange={this.handleLoginChange}
@@ -70,7 +75,7 @@ class WelcomeContainer extends React.Component {
           </div>
           <div className='app-menu'>
             <AppMenu
-              handleLoginClick={() => { this.handleModalShow('loginModal', true)}}
+              handleLoginClick={() => this.handleModalShow('loginModal', true)}
               handleSignupClick={() => {}}
             />
           </div>
@@ -89,4 +94,9 @@ class WelcomeContainer extends React.Component {
   } 
 }
 
-export default WelcomeContainer
+const mapDispatchToProps = dispatch => ({
+  login: (userName, password) => dispatch(login(userName, password))
+})
+
+export default
+  connect (null, mapDispatchToProps) (WelcomeContainer)

@@ -1,23 +1,22 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+import { connect } from 'react-redux'
 
 import Layout from 'layout/layout.component'
 import WelcomeContainer from 'containers/welcome-container/welcome-container.component'
 
-import store from 'redux/store'
-
 import { login } from 'redux/auth/auth.actions'
-store.dispatch(login('richard', 'medina'))
 
 const App = ({ isLogged }) =>
-  <Provider store={store}>
-    {
-      isLogged
-        ? <Layout />
-        : <WelcomeContainer />
-    }
-  </Provider>
+  isLogged
+    ? <Layout />
+    : <WelcomeContainer />
 
-export default App
+
+const mapStateToProps = state => ({
+  isLogged: state.authReducer.token !== ''
+})
+
+export default
+  connect(mapStateToProps)(App)
 
 

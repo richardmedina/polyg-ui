@@ -20,8 +20,13 @@ const AppToolbar = () =>
       <Nav.Link href="#pricing">About</Nav.Link>
     </Nav>
     <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-info">Search</Button>
+      <Form.Group>
+        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <Button variant="outline-info">Search</Button>
+      </Form.Group>
+      <Form.Group style={{paddingLeft: '10px'}}>
+        <Button variant="warning">Logout</Button>
+      </Form.Group>
     </Form>
   </Navbar>
 

@@ -1,9 +1,13 @@
 import { put, takeLatest, all, call } from 'redux-saga/effects'
 import authActionTypes from './auth.types'
-
 import Api from 'services/Api'
 
-function* doLogin(action) {
+import {
+  loginSuccess,
+  loginFailure  
+} from './auth.actions'
+
+function* login(action) {
   const {
     userName,
     password
@@ -11,15 +15,16 @@ function* doLogin(action) {
 
   try {
     const { data } = yield Api.auth.post(userName, password)
-    console.log('Data: ', data)
+    yield put(loginSuccess(data))
   }
   catch(error) {
-    console.log('Error: ', error)
+    //console.log('Error: ', error)
+    yield put(loginFailure(error))
   }
 }
 
 function* onLogin() {
-  yield takeLatest(authActionTypes.LOGIN, doLogin)
+  yield takeLatest(authActionTypes.LOGIN, login)
 }
 
 export default function* authSagas() {
