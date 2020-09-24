@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   Navbar,
   Nav,
@@ -11,13 +12,13 @@ import AppLogo from 'components/app-logo/app-logo.component'
 
 const AppToolbar = () =>
   <Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#home">
+    <Navbar.Brand as={Link} to="/">
       <AppLogo small />
     </Navbar.Brand>
     <Nav className="mr-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#features">Phrases</Nav.Link>
-      <Nav.Link href="#pricing">About</Nav.Link>
+      <Nav.Link as={Link} to="/">Home</Nav.Link>
+      <Nav.Link as={Link} to='/phrases'>Phrases</Nav.Link>
+      <Nav.Link as={Link} to='/about'>About</Nav.Link>
     </Nav>
     <Form inline>
       <Form.Group>
