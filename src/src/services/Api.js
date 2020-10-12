@@ -1,6 +1,11 @@
 import Axios from 'axios'
 
-const client = Axios.create()
+
+const baseURL = 'https://polyg.azurewebsites.net'
+
+const client = Axios.create({
+  baseURL
+})
 
 class Api {
   constructor(){
