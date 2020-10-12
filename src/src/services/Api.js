@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 
-const baseURL = 'https://polyg.azurewebsites.net'
+const baseURL = 'https://polyg.mycleverapp.com'
 
 const client = Axios.create({
   baseURL
