@@ -1,8 +1,8 @@
 import Axios from 'axios'
 
 
-const baseURL = 'https://polyg.mycleverapp.com'
-
+let baseURL = 'https://polyg.mycleverapp.com/api'
+baseURL = 'https://polyg.azurewebsites.net/api'
 const client = Axios.create({
   baseURL
 })
@@ -13,6 +13,11 @@ class Api {
     this.auth = {
       post: (userName, password) =>
         client.post(`/auth`, {userName, password})
+    }
+
+    this.languages = {
+      getAll: () =>
+        client.get(`/languages`)
     }
   }
 }
