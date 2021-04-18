@@ -3,10 +3,6 @@ import { ListGroup } from 'react-bootstrap'
 import defaultGotchi from 'assets/mycleverapp.png'
 
 const ChatListItem = ({ chat }) => {
-  const userStr = (chat.users ?? [])
-    .map(u => u.displayName)
-    .join(', ')
-
   return (
     <ListGroup.Item
       style={{
@@ -28,11 +24,7 @@ const ChatListItem = ({ chat }) => {
           }}
         >
           <div>
-          {
-            userStr.length > 50
-              ? userStr.substring(1, 50)
-              : userStr 
-          }
+            { chat.title }
           </div>
           <div
             style={{

@@ -13,7 +13,7 @@ const ChatList = ({ chats }) =>
           .map(chat =>
             <ChatListItem
               key={chat.id}
-              chat={chat} 
+              chat={chat}
             />
           )
       }
