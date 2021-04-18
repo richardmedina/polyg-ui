@@ -8,7 +8,7 @@ export const selectIsLoginLoading = createSelector(
 )
 export const selectIsLoggedIn = createSelector(
   [selectAuth],
-  auth => auth.credentials.token !== ''
+  auth => true //auth.credentials.token !== ''
 )
 
 export const selectIsLoggedInError = createSelector (
